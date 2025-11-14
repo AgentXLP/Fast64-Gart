@@ -4842,6 +4842,15 @@ class SPCopyPlayerPartToColor(GbiMacro):
 
     def to_c(self, static=True):
         return f"gsSPCopyPlayerPartToColor({self.col}, {self.idx}, {self.offset})"
+    
+@dataclass(unsafe_hash=True)
+class DPSetEnvRGB(GbiMacro):
+    r: int
+    g: int
+    b: int
+
+    def to_c(self, static=True):
+        return f"gsDPSetEnvRGB({self.r}, {self.g}, {self.b})"
 
 
 @dataclass(unsafe_hash=True)

@@ -913,6 +913,7 @@ class F3DPanel(Panel):
         prop_input.prop(material.f3d_mat, "env_color", text="")
         if get_F3D_GBI().F3DEX_GBI_2E:
             prop_split(layout, material.f3d_mat, "coopcopyenv", "Environment Color Player Part")
+            prop_input_name.prop(material.f3d_mat, "coopdontsetalpha", text="Don't set Environment Alpha")
         setProp = material.f3d_mat.set_env
         prop_input.enabled = setProp
         return inputGroup
@@ -4768,6 +4769,7 @@ class F3DMaterialProperty(PropertyGroup):
     coopkeeplight: bpy.props.BoolProperty()
     coopcopyenv: bpy.props.EnumProperty(items=sm64PlayerPartsCopyOtherEnum, default="None")
     coopcopyprim: bpy.props.EnumProperty(items=sm64PlayerPartsCopyOtherEnum, default="None")
+    coopdontsetalpha: bpy.props.BoolProperty(description="F3DEX2E: Generate a SetEnvRGB instead of SetEnvColor (Alpha doesn't get affected)")
 
     def key(self) -> F3DMaterialHash:
         useDefaultLighting = self.set_lights and self.use_default_lighting

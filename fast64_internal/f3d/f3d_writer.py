@@ -1510,8 +1510,12 @@ def saveOrGetF3DMaterial(material, fModel, obj, drawLayer, convertTextureData):
 
     if useDict["Environment"]:
         if f3dMat.set_env:
-            color = exportColor(f3dMat.env_color[0:3]) + [scaleToU8(f3dMat.env_color[3])]
-            fMaterial.mat_only_DL.commands.append(DPSetEnvColor(*color))
+            if (f3dMat.coopdontsetalpha):
+                color = exportColor(f3dMat.env_color[0:3])
+                fMaterial.mat_only_DL.commands.append(DPSetEnvRGB(*color))
+            else:
+                color = exportColor(f3dMat.env_color[0:3]) + [scaleToU8(f3dMat.env_color[3])]
+                fMaterial.mat_only_DL.commands.append(DPSetEnvColor(*color))
         if f3dMat.coopcopyenv != "None" and get_F3D_GBI().F3DEX_GBI_2E:
             fMaterial.mat_only_DL.commands.append(SPCopyPlayerPartToColor(
                 "G_COL_ENV",
