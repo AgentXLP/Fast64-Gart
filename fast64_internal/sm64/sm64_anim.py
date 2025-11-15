@@ -97,7 +97,7 @@ class SM64_ShortArray:
 
         wrapCounter = 0
         for short in self.shortData:
-            data += str(short) + ", "
+            data += "0x" + format(short, "04X") + ", "
             wrapCounter += 1
             if wrapCounter > 8:
                 data += "\n\t"

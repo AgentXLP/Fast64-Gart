@@ -5106,7 +5106,7 @@ def mat_register():
     Scene.f3d_simple = bpy.props.BoolProperty(name="Display Simple", default=True)
 
     Object.use_f3d_culling = bpy.props.BoolProperty(
-        name="Use Culling", description="F3DEX: Adds culling vertices", default=True
+        name="Use Culling", description="F3DEX: Adds culling vertices", default=False
     )
     Object.ignore_render = bpy.props.BoolProperty(name="Ignore Render")
     Object.ignore_collision = bpy.props.BoolProperty(name="Ignore Collision")
