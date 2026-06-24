@@ -88,14 +88,23 @@ class SM64_Properties(PropertyGroup):
         update=decomp_path_update,
     )
     sm64_repo_settings_tab: BoolProperty(default=True, name="SM64 Repo Settings")
-    disable_scroll: BoolProperty(name="Disable Scrolling Textures")
+    disable_scroll: BoolProperty(
+        name="Disable Scrolling Textures"
+        description="Global toggle to disable any scrolling textures on exported data"
+    )
     # Coop
-    fix_coop_fog: BoolProperty(name="Fix Coop Fog")
+    fix_coop_fog: BoolProperty(
+        name="Fix Coop Fog",
+        description="Overrides specific combiner values in fog material exports to fix bug where they're invisible in-game"
+    )
     smlua_mod_path: bpy.props.StringProperty(name="Coop Mod Path", subtype="FILE_PATH", default="")
-    add_coop_reverts: BoolProperty(name="Add Coop Reverts")
+    add_coop_reverts: BoolProperty(
+        name="Add Coop Reverts",
+        description="Adds some extra commands to the end of displaylists to fix rendering problems, usually with character models"
+    )
     smlua_texscroll: bpy.props.BoolProperty(
         name="Lua Scrolling Textures",
-        description="Scrolls will export to a lua file in the coop mod folder.",
+        description="Scrolls will export to a lua file in the coop mod folder",
     )
     refresh_version: EnumProperty(items=enum_refresh_versions, name="Refresh", default="Refresh 16")
     compression_format: EnumProperty(
@@ -112,7 +121,10 @@ class SM64_Properties(PropertyGroup):
         name="Matstack Fix",
         description="Exports account for matstack fix requirements",
     )
-    lighting_engine_presets: BoolProperty(name="Lighting Engine Presets")
+    lighting_engine_presets: BoolProperty(
+        name="Wiseguy Lighting Engine Presets",
+        description="Enables the material presets used for Wiseguy's lighting engine"
+    )
     write_all: BoolProperty(
         name="Write All",
         description="Write single load geo and set othermode commands instead of writting the difference to defaults. Can result in smaller displaylists but may introduce issues",
