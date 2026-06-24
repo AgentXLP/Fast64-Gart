@@ -1590,6 +1590,8 @@ def packNormal(normal: Vector) -> int:
     # Convert standard normal to constant-L1 normal
     assert len(normal) == 3
     l1norm = abs(normal[0]) + abs(normal[1]) + abs(normal[2])
+    if l1norm == 0:
+        l1norm = 1
     xo, yo, zo = tuple([int(round(a * 127.0 / l1norm)) for a in normal])
     if abs(xo) + abs(yo) > 127:
         yo = int(math.copysign(127 - abs(xo), yo))
