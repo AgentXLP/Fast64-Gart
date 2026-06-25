@@ -89,7 +89,7 @@ class SM64_Properties(PropertyGroup):
     )
     sm64_repo_settings_tab: BoolProperty(default=True, name="SM64 Repo Settings")
     disable_scroll: BoolProperty(
-        name="Disable Scrolling Textures"
+        name="Disable Scrolling Textures",
         description="Global toggle to disable any scrolling textures on exported data"
     )
     # Coop
