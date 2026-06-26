@@ -1645,6 +1645,9 @@ def unpackNormal(packedNormal: int) -> Vector:
 
 
 def packNormal(normal: Vector) -> int:
+    if bpy.context.scene.f3d_type == "F3DEX2E":
+        bpy.context.scene.packed_normals_algorithm = "Octahedral"
+
     if bpy.context.scene.packed_normals_algorithm == "565":
 
         def convertComponent(v: float, range: int):
@@ -1663,6 +1666,8 @@ def packNormal(normal: Vector) -> int:
         # Convert standard normal to constant-L1 normal
         assert len(normal) == 3
         l1norm = abs(normal[0]) + abs(normal[1]) + abs(normal[2])
+        if l1norm == 0:
+            l1norm = 1
         xo, yo, zo = tuple([int(round(a * 127.0 / l1norm)) for a in normal])
         if abs(xo) + abs(yo) > 127:
             yo = int(math.copysign(127 - abs(xo), yo))

@@ -95,12 +95,12 @@ class SM64_Properties(PropertyGroup):
     # Coop
     fix_coop_fog: BoolProperty(
         name="Fix Coop Fog",
-        description="Overrides specific combiner values in fog material exports to fix bug where they're invisible in-game"
+        description="Overrides specific combiner values in fog material exports to fix a bug where they're invisible in-game"
     )
     smlua_mod_path: bpy.props.StringProperty(name="Coop Mod Path", subtype="FILE_PATH", default="")
     add_coop_reverts: BoolProperty(
         name="Add Coop Reverts",
-        description="Adds some extra commands to the end of displaylists to fix rendering problems, usually with character models"
+        description="Adds some extra commands to the end of displaylists to fix transparency rendering problems usually with character models"
     )
     smlua_texscroll: bpy.props.BoolProperty(
         name="Lua Scrolling Textures",
@@ -280,13 +280,14 @@ class SM64_Properties(PropertyGroup):
         col.separator()
 
         # people feel the need to tick random checkboxes
+        # not me though
         warning = col.column()
         warning.alert = True
         multilineLabel(warning, text="Only enable these if you know what\nyou're doing.", icon="ERROR")
-        warning.prop(self, "write_all")
+        col.prop(self, "write_all")
         if self.show_matstack_fix:
-            warning.prop(self, "matstack_fix")
-        warning.prop(self, "lighting_engine_presets")
+            col.prop(self, "matstack_fix")
+        col.prop(self, "lighting_engine_presets")
         col.separator()
 
         draw_custom_cmd_presets(self, col.box())

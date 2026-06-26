@@ -5402,7 +5402,7 @@ def mat_register():
     Scene.f3d_type = bpy.props.EnumProperty(
         name="Microcode", items=enumF3D, default="F3DEX2E", update=update_all_material_nodes
     )
-    Scene.packed_normals_algorithm = bpy.props.EnumProperty(name="Packed normals alg", items=enumPackedNormalsAlgorithm)
+    Scene.packed_normals_algorithm = bpy.props.EnumProperty(name="Packed Normals Algorithm", items=enumPackedNormalsAlgorithm)
 
     # RDP Defaults
     World.rdp_defaults = bpy.props.PointerProperty(type=RDPSettings)
