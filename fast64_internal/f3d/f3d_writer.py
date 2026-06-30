@@ -1210,11 +1210,14 @@ def getLoopNormal(loop: bpy.types.MeshLoop) -> Vector:
     # don't want floating-point inaccuracy causing "same" vertices not to be
     # merged. But, it hasn't been transformed yet, so quantizing to s8 here will
     # lose some accuracy.
+    nx = loop.normal[0] if not math.isnan(loop.normal[0]) else 0
+    ny = loop.normal[1] if not math.isnan(loop.normal[1]) else 0
+    nz = loop.normal[2] if not math.isnan(loop.normal[2]) else 0
     return Vector(
         (
-            round(loop.normal[0] * 2**16) / 2**16,
-            round(loop.normal[1] * 2**16) / 2**16,
-            round(loop.normal[2] * 2**16) / 2**16,
+            round(nx * 2**16) / 2**16,
+            round(ny * 2**16) / 2**16,
+            round(nz * 2**16) / 2**16,
         )
     ).freeze()
 
